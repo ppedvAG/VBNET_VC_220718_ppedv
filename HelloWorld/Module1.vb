@@ -1,65 +1,75 @@
-﻿Module Module1
+﻿'MODULE sind grundlegende Programmeinheiten, von welchen sich keine Instanzen erstellen lassen. Sie beinhalten nur ausführbaren Code
+''der einer bestimmten Aufgabe zugeordnet ist.
+Module Module1
 
+    'Die Main()-Methode ist der Einstiegspunkt in jedes .NET-Programm. Hier startet das Programm.
     Sub Main()
 
+        'Zugriff aud die BackgroundColor-Property der Console-Klasse und Neuzuweisung dieser
+        Console.BackgroundColor = ConsoleColor.Blue
+
+        'Ausgabe eines String-Literals in der Console
+        Console.WriteLine("Hello World")
+
+        'Deklaration einer String-Variablen
         Dim meinString As String
-
+        'Initialisierung der String-Variablen
         meinString = "Hallo Welt"
-
+        'Ausgabe der String-Variablen
         Console.WriteLine(meinString)
 
-        Console.WriteLine("Auch hallo")
-
-        meinString = "Ciao"
-
+        'Neuzuweisung und Ausgabe der String-Variablen
+        meinString = "Heute ist ein schöner Tag!"
         Console.WriteLine(meinString)
 
+        'Deklaration und Initialisierung weiterer Variablen (jeweils in einer Zeile)
         Dim Alter As Integer = 31
+        Dim Name As String = "Klaas"
 
-        Dim Stadt As String = "Berlin"
-
-        Dim DoppeltesAlter As Integer = Alter * 2
-
-        Console.WriteLine(DoppeltesAlter)
-        Console.WriteLine(Alter * 2)
-
-        Dim kombinierterString As String = "Ich bin " + Alter.ToString() + " Jahre alt und wohne in " + Stadt + "."
-        Stadt = "München"
+        'String-Formatierungen
+        ''"traditionelle" Verknüpfung durch +-Operatoren (Nicht-Strings müssen explizit umgewandelt werden
+        Dim kombinierterString As String = "Mein Name ist " + Name + " und ich bin " + Alter.ToString() + " Jahre alt."
         Console.WriteLine(kombinierterString)
-        Console.WriteLine("Ich bin " + Alter.ToString() + " Jahre alt und wohne in " + Stadt + ".")
-
-        Console.WriteLine("Ich bin {0} Jahre alt und wohne in {1}.", Alter, Stadt)
-
-        kombinierterString = $"Ich bin {Alter} Jahre alt und wohne in {Stadt}."
+        ''Indexschreibweise -> Null-basierte Indizes werden durch angegebene Variablen ausgetauscht
+        Console.WriteLine("Mein Name ist {0} und ich bin {1} Jahre alt.", Name, Alter)
+        ''$-Schreibweise -> Variablen werden direkt im String plaziert
+        kombinierterString = $"Mein Name ist {Name} und ich bin {Alter} Jahre alt."
         Console.WriteLine(kombinierterString)
-        Console.WriteLine($"Ich bin {Alter} Jahre alt und wohne in {Stadt}.")
+        Console.WriteLine($"Mein Name ist {Name} und ich bin {Alter} Jahre alt.")
 
-        Console.WriteLine($"Dies ist ein Zeilenumbruch {Environment.NewLine} und dies ein {vbTab} horizontaler Tab.")
+        'Formatierung durch Konstanten
+        ''vbNewLine -> erzwingt Zeilenumbruch
+        ''vbTab -> erzwingt horizontalen Tabulator
+        Console.WriteLine($"Dies ist ein Zeilenumbuch {System.Environment.NewLine} und dies {vbTab} ein hotizontaler Tab.")
 
+        'Deklaration und Initialisierung einer eigenen Konstanten
         Const Pi As Double = 3.15
-        Console.WriteLine(Pi)
 
-        Console.Write("Bitte gib eine Zahl ein: ")
-        Dim benutzerEingabe As String = Console.ReadLine()
-        Console.WriteLine($"Dein Eingabe ist: {benutzerEingabe}")
+        'Speichern einer Benutzereingabe (String) in einer Variablen
+        Console.WriteLine("Bitte gib eine Zahl ein: ")
+        Dim benutzereingabe As String = Console.ReadLine()
+        Console.WriteLine(benutzereingabe)
 
-        Dim ungewandelteZahl As Integer = Integer.Parse(benutzerEingabe)
-        Console.WriteLine(ungewandelteZahl * 2)
+        'Parsen des Strings in einen Integer
+        Dim eingabeAlsInt As Integer = Integer.Parse(benutzereingabe)
+        Console.WriteLine(eingabeAlsInt * 2)
 
-        Dim gedrückteTaste As ConsoleKeyInfo = Console.ReadKey(True)
-        Console.WriteLine($"Du hast folgende Taste gedrückt: {gedrückteTaste.Key}")
+        'Abgreifen und Zwischenspeichern einer gedrüclten Taste
+        Dim pressedKey As ConsoleKeyInfo = Console.ReadKey()
+        Console.WriteLine($"Du hast folgende Taste gedrückt: {pressedKey.Key}")
 
-
-        Dim gleitkommazahl As Double = 45.62444564243
-        Dim ganzzahl As Integer = gleitkommazahl
-        Console.WriteLine(ganzzahl)
-        Console.WriteLine(CInt(gleitkommazahl))
-
+        'Demonstration: Teilung durch 0
         Dim a As Integer = 15
         Dim b As Integer = 0
         Dim erg As Double = a / b
         Console.WriteLine(erg)
 
+        'Umwandlung Double in Integer (impliziet und expliziet)
+        Dim gleitkommazahl As Double = 45.456
+        Dim ganzzahl As Integer = gleitkommazahl
+        ganzzahl = CInt(gleitkommazahl)
+
+        'Programmpause
         Console.ReadKey()
 
     End Sub
