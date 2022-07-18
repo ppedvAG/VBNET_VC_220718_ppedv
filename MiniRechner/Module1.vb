@@ -14,8 +14,8 @@
         eingabeDbl = Double.Parse(Console.ReadLine())
 
         'Ausgabe der Additionen
-        Console.WriteLine($"{Environment.NewLine}Ergebnis als Integer: {eingabeInt + CInt(eingabeDbl)}")  'Ausgabe als Integer erfordert Umwandlung des Doublewerts
-        Console.WriteLine($"Ergebnis als Double: {CDbl(eingabeInt) + eingabeDbl}")              'Ausgabe als Double erfolgt implizit, da sich ein Doublewert in der Addition befindet
+        Console.WriteLine($"{Environment.NewLine}Ergebnis als Integer: {eingabeInt} + {eingabeDbl} = {eingabeInt + CInt(eingabeDbl)}")  'Ausgabe als Integer erfordert Umwandlung des Doublewerts
+        Console.WriteLine($"Ergebnis als Double: {eingabeInt + eingabeDbl}")              'Ausgabe als Double erfolgt implizit, da sich ein Doublewert in der Addition befindet
 
         'Berechnung und Ausgabe der Division mittels Hilfsvariablen
         Dim min = Math.Min(eingabeInt, eingabeDbl)
