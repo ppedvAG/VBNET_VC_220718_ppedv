@@ -15,7 +15,9 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lab02_Lotto", "Lotto\Lab02_
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modul03_Enums", "Enums\Modul03_Enums.vbproj", "{F14F2343-E58B-4A10-9517-B3D9036EF886}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Funktionen", "Funktionen\Funktionen.vbproj", "{A06541C0-518B-44B9-8834-0B66AA52ED03}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modul04_Funktionen", "Funktionen\Modul04_Funktionen.vbproj", "{A06541C0-518B-44B9-8834-0B66AA52ED03}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lab04_Taschenrechner", "Taschenrechner\Lab04_Taschenrechner.vbproj", "{A7132F1F-9218-40B7-BDC5-5F706C422F62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{A06541C0-518B-44B9-8834-0B66AA52ED03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A06541C0-518B-44B9-8834-0B66AA52ED03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A06541C0-518B-44B9-8834-0B66AA52ED03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
