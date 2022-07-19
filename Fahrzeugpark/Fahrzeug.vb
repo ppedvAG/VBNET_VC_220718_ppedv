@@ -1,7 +1,14 @@
 ﻿'Eine KLASSE ist ein Programmteil, welches die Struktur von bestimmten Objekten definiert. Alle Objekte, welche von dieser
 ''Klasse abgeleitet werden, besitzen die selben Methoden und Eigenschaften, welche aber unterschiedlich befüllt werden können
 ''und unabhängig von anderen gleichartigen Objekten agieren.
-Public Class Fahrzeug
+Public MustInherit Class Fahrzeug
+
+    Public Shared AnzahlFahrzeuge As Integer = 0
+
+    Public Shared Sub ZeigeAnzahlAllerFahrzeuge()
+        Console.WriteLine($"Es wurden {AnzahlFahrzeuge} Fahrzeuge produziert.")
+    End Sub
+
 
 #Region "Felder und Properties"
     'FELDER sind die Variablen, welche jedes Objekt dieser Klasse besitzt und welche individuell befüllt werden können.
@@ -73,6 +80,8 @@ Public Class Fahrzeug
         _aktGeschwindigkeit = 0
         _zustand = False
 
+        AnzahlFahrzeuge += 1
+
     End Sub
 
     'Parameterloser Standartkonstruktor
@@ -112,9 +121,15 @@ Public Class Fahrzeug
         End If
     End Sub
 
-    Public Function BeschreibeMich() As String
+    Public Overridable Function BeschreibeMich() As String
         Return $"{Name} fährt mit {AktGeschwindigkeit} von {MaxGeschwindigkeit} km/h und kostet {Preis} Euro."
     End Function
+
+    Public Overrides Function ToString() As String
+        Return BeschreibeMich()
+    End Function
+
+    Public MustOverride Sub Hupen()
 
 
 #End Region
