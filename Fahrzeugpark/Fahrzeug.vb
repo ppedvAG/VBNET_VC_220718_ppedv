@@ -1,13 +1,18 @@
 ﻿'Eine KLASSE ist ein Programmteil, welches die Struktur von bestimmten Objekten definiert. Alle Objekte, welche von dieser
 ''Klasse abgeleitet werden, besitzen die selben Methoden und Eigenschaften, welche aber unterschiedlich befüllt werden können
 ''und unabhängig von anderen gleichartigen Objekten agieren.
+'Wenn eine Klassensignatur das Stichwort MUSTINHERIT beinhaltet, gilt die Klasse als abstarkt. D.h. von dieser Klasse dürfen
+''keine Objekte mehr erzeugt werden. Sie ist nur noch Vorlage für Kindklassen.
 Public MustInherit Class Fahrzeug
 
-    Public Shared AnzahlFahrzeuge As Integer = 0
+#Region "Shared Member"
+    'SHARED Variablen und Methoden gelten unabhängig von Instanzen für die ganze Klasse.  
+    Public Shared AnzahlErstellterFahrzeuge As Integer = 0
 
-    Public Shared Sub ZeigeAnzahlAllerFahrzeuge()
-        Console.WriteLine($"Es wurden {AnzahlFahrzeuge} Fahrzeuge produziert.")
+    Public Shared Sub ZeigeAnzahlErstellterFahrzeuge()
+        Console.WriteLine($"Es wurden {AnzahlErstellterFahrzeuge} Fahrzeuge gebaut.")
     End Sub
+#End Region
 
 
 #Region "Felder und Properties"
@@ -80,8 +85,7 @@ Public MustInherit Class Fahrzeug
         _aktGeschwindigkeit = 0
         _zustand = False
 
-        AnzahlFahrzeuge += 1
-
+        AnzahlErstellterFahrzeuge += 1
     End Sub
 
     'Parameterloser Standartkonstruktor
@@ -121,14 +125,20 @@ Public MustInherit Class Fahrzeug
         End If
     End Sub
 
+    'Als OVERRIDABLE markierte Methoden erlauben erbenden Klassen diese zu überschreiben, so dass bei Methodenaufruf die Methode
+    ''der Kindklasse ausgeführt wird
     Public Overridable Function BeschreibeMich() As String
         Return $"{Name} fährt mit {AktGeschwindigkeit} von {MaxGeschwindigkeit} km/h und kostet {Preis} Euro."
     End Function
 
+    'Überschreibung der ToString-Funktion
     Public Overrides Function ToString() As String
-        Return BeschreibeMich()
+        Return Me.BeschreibeMich()
     End Function
 
+    'Abstarkte Methoden (markiert mit dem MUSTOVERRIDE-Stichwort) besitzen nur eine Signatur. Die Implementierung des Körpers
+    ''erfolgt individuell in den Kindklassen, welche dazu gewungen werden. Abstrakte Methoden dürfen nur in eine abstrakten
+    ''Klasse geschrieben werden
     Public MustOverride Sub Hupen()
 
 

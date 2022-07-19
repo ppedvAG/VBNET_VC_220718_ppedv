@@ -45,28 +45,39 @@ Module Module1
 
 #End Region
 
+#Region "Modul 07 Vererbung"
+        'Dim pkw1 As PKW = New PKW("BMW", 260, 28000, 5)
 
-        'Dim fz1 As Fahrzeug = New Fahrzeug("BMW", 270, 25000)
-        Dim pkw1 As PKW = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
-        pkw1 = New PKW("Mercedes", 230, 25000, 5)
+        'Console.WriteLine(pkw1.BeschreibeMich())
 
-        pkw1.StarteMotor()
-        pkw1.Beschleunige(200)
+        'Console.WriteLine(pkw1)
 
+        ''Dim fz1 As Fahrzeug = New Fahrzeug()
+
+        'Fahrzeug.ZeigeAnzahlErstellterFahrzeuge()
+
+        'pkw1.Hupen()
+#End Region
+
+#Region "Lab 07 Schiffs-, PKW-, Flugzeug-Klassen"
+        'Deklaration und Initialisierung der spezifischen Fahrzeuge sowie Aufruf der BeschreibeMich()-Methoden
+        Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
         Console.WriteLine(pkw1.BeschreibeMich())
 
-        Console.WriteLine(pkw1)
+        Dim flugzeug1 As Flugzeug = New Flugzeug("Boing", 800, 3500000, 9999)
+        Console.WriteLine(flugzeug1.BeschreibeMich())
 
+        Dim schiff1 As Schiff = New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf)
+        Console.WriteLine(schiff1.BeschreibeMich())
+
+        'Aufruf der abstarkten Methoden Hupen()
         pkw1.Hupen()
+        schiff1.Hupen()
+        flugzeug1.Hupen()
 
-        Console.WriteLine(Fahrzeug.AnzahlFahrzeuge)
-
-        Fahrzeug.ZeigeAnzahlAllerFahrzeuge()
+        'Ausgabe des Shared Members der Fahrzeug-Klasse
+        Fahrzeug.ZeigeAnzahlErstellterFahrzeuge()
+#End Region
 
         Console.ReadKey()
     End Sub

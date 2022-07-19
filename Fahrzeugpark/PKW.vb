@@ -1,4 +1,5 @@
-﻿Public Class PKW
+﻿'vgl auch Schiff
+Public Class PKW
     Inherits Fahrzeug
 
     Private _anzahlTueren As Integer
@@ -17,10 +18,12 @@
         _anzahlTueren = anzT
     End Sub
 
+    'Überschreibende Methode (Benötigt eine gleichnamige, mit OVERRIDABLE markierte Methode in der Mutterklasse)
     Public Overrides Function BeschreibeMich() As String
-        Return "Der PKW " + MyBase.BeschreibeMich() + $" Er hat {AnzahlTueren} Türen."
+        Return $"Der PKW {MyBase.BeschreibeMich()} Er hat {AnzahlTueren} Türen."
     End Function
 
+    'Implementierung der abstrakten Methode der Fahrzeug-Klasse
     Public Overrides Sub Hupen()
         Console.WriteLine("Hup Hup")
     End Sub

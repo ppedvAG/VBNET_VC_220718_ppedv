@@ -23,7 +23,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Fahrzeugpark", "Fahrzeugpar
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TesteFahrzeugpark", "TesteFahrzeugpark\TesteFahrzeugpark.vbproj", "{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WerteVsReferenzen", "WerteVsReferenzen\WerteVsReferenzen.vbproj", "{14AB059C-772B-419D-9821-610666412EEA}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modul06_WerteVsReferenzen", "WerteVsReferenzen\Modul06_WerteVsReferenzen.vbproj", "{14AB059C-772B-419D-9821-610666412EEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
