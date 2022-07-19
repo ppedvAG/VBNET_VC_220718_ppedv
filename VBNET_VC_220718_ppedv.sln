@@ -19,6 +19,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modul04_Funktionen", "Funkt
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lab04_Taschenrechner", "Taschenrechner\Lab04_Taschenrechner.vbproj", "{A7132F1F-9218-40B7-BDC5-5F706C422F62}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Fahrzeugpark", "Fahrzeugpark\Fahrzeugpark.vbproj", "{D8E24AB7-2D3C-4AB6-AACD-271BC39ABD60}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TesteFahrzeugpark", "TesteFahrzeugpark\TesteFahrzeugpark.vbproj", "{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7132F1F-9218-40B7-BDC5-5F706C422F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E24AB7-2D3C-4AB6-AACD-271BC39ABD60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E24AB7-2D3C-4AB6-AACD-271BC39ABD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E24AB7-2D3C-4AB6-AACD-271BC39ABD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E24AB7-2D3C-4AB6-AACD-271BC39ABD60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455A17D9-BAE8-4632-BB4D-A4C4E68ACCDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
