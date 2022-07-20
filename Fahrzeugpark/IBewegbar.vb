@@ -1,6 +1,7 @@
-﻿Public Interface IBewegbar
+﻿'vgl. IBeladbar
+Public Interface IBewegbar
 
-    Property AnzahlRäder As Integer
+    Property AnzahlRaeder As Integer
 
     Sub Crash()
 

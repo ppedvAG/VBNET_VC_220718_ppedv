@@ -24,6 +24,7 @@
         End Set
     End Property
 
+    'Property des Interfaces
     Private _ladung As Fahrzeug
     Public Property Ladung As Fahrzeug Implements IBeladbar.Ladung
         Get
@@ -59,25 +60,30 @@
         Console.WriteLine("Trööööt")
     End Sub
 
-    Public Sub Beladen(fz1 As Fahrzeug) Implements IBeladbar.Beladen
-        If fz1.Equals(Me) Then
-            Console.WriteLine("Das Schiff kann nicht auf sich selbst geladen werden.")
-        ElseIf IsNothing(Ladung) Then
-            Ladung = fz1
-            Console.WriteLine("Ladevorgang erfolgreich")
-        Else
-            Console.WriteLine("Ladeplatz schon belegt")
+    'Durch Interface verlangte Methoden
+    Public Sub Belade(fz As Fahrzeug) Implements IBeladbar.Belade
+
+        If fz.Equals(Me) Then           'Prüfung, ob das zu beladende und das aufzuladene Fahrzeug dasselbe ist
+            Console.WriteLine($"{Name} kann nicht auf sich selbst geladen werden.")
+        ElseIf IsNothing(Ladung) Then   'Prüfung, ob der Ladeplatz leer ist
+            'Übertrag des übergebenen Fahrzeugs in die Ladung-Property
+            Ladung = fz
+            Console.WriteLine($"Ladevorgang von {fz.Name} auf {Name} war erfolgreich.")
+        Else                            'Fall tritt ein, wenn der Ladeplatz bereits belegt ist
+            Console.WriteLine($"{fz.Name} konnte nicht auf {Name} geladen werden, da der Laderaum schon belegt ist.")
         End If
+
     End Sub
 
-    Public Function Entladen() As Fahrzeug Implements IBeladbar.Entladen
-        Dim ladungTemp As Fahrzeug = Ladung
-        If IsNothing(Ladung) Then
-            Console.WriteLine("Ladung ist nicht vorhanden")
-        Else
-            Ladung = Nothing
-            Console.WriteLine("Ladung wurde erfolgreich geöscht")
+    Public Function Entlade() As Fahrzeug Implements IBeladbar.Entlade
+        Dim ladung As Fahrzeug = Me.Ladung
+        If IsNothing(ladung) Then       'Prüfung, ob der Ladeplatz leer ist
+            Console.WriteLine($"Entladevorgang nicht möglich, da der Laderaum von {Name} bereits leer ist.")
+        Else                            'Fall tritt ein, wenn der Ladeplatz belegt ist
+            Console.WriteLine($"{ladung.Name} wurde erfolgreich von {Name} entladen.")
+            'Löschen der Referenz in der Ladung-Property
+            Me.Ladung = Nothing
         End If
-        Return ladungTemp
+        Return ladung
     End Function
 End Class

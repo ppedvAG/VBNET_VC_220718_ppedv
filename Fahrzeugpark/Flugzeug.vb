@@ -13,13 +13,13 @@ Public Class Flugzeug
         End Set
     End Property
 
-    Private _anzahlRäder As Integer
-    Public Property AnzahlRäder As Integer Implements IBewegbar.AnzahlRäder
+    Private _anzahlRaeder As Integer
+    Public Property AnzahlRaeder As Integer Implements IBewegbar.AnzahlRaeder
         Get
-            Return _anzahlRäder
+            Return _anzahlRaeder
         End Get
         Set(value As Integer)
-            _anzahlRäder = value
+            _anzahlRaeder = value
         End Set
     End Property
 
@@ -37,7 +37,7 @@ Public Class Flugzeug
     End Sub
 
     Public Sub Crash() Implements IBewegbar.Crash
-        AnzahlRäder -= 2
+        AnzahlRaeder -= 2
         Console.WriteLine("Da war die Landebahn zu kurz")
     End Sub
 End Class

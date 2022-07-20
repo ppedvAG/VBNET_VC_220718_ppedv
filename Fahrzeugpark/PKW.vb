@@ -13,13 +13,13 @@ Public Class PKW
         End Set
     End Property
 
-    Private _anzahlRäder As Integer
-    Public Property AnzahlRäder As Integer Implements IBewegbar.AnzahlRäder
+    Private _anzahlReader As Integer
+    Public Property AnzahlRaeder As Integer Implements IBewegbar.AnzahlRaeder
         Get
-            Return _anzahlRäder
+            Return _anzahlReader
         End Get
         Set(value As Integer)
-            _anzahlRäder = value
+            _anzahlReader = value
         End Set
     End Property
 
@@ -27,6 +27,8 @@ Public Class PKW
         MyBase.New(name, maxG, preis)
 
         _anzahlTueren = anzT
+
+        _anzahlReader = 4
     End Sub
 
     'Überschreibende Methode (Benötigt eine gleichnamige, mit OVERRIDABLE markierte Methode in der Mutterklasse)
@@ -40,7 +42,26 @@ Public Class PKW
     End Sub
 
     Public Sub Crash() Implements IBewegbar.Crash
-        AnzahlRäder -= 1
+        AnzahlRaeder -= 1
         Console.WriteLine("Da war ein Baum im Weg")
     End Sub
+
+    'Statische Methode zur Generierung von vollständig zufälligen PKWs
+    Private Shared generator As Random = New Random()
+    Public Shared Function ErstelleZufälligesFahzeug(Optional suffix As String = "") As PKW
+        Dim name As String = String.Empty
+        Select Case generator.Next(1, 5)
+            Case 1
+                name = "Audi"
+            Case 2
+                name = "BMW"
+            Case 3
+                name = "Mercedes"
+            Case 4
+                name = "VW"
+        End Select
+        name = $"{name}{suffix}"
+        Return New PKW(name, generator.Next(150, 300), generator.Next(1500, 30000), generator.Next(1, 6))
+
+    End Function
 End Class

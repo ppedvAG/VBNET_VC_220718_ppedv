@@ -18,7 +18,7 @@ Module Module1
 
         Dim fz1, fz2 As Fahrzeug
 
-        fz1 = New Fahrzeug("BMW", 270, 25000)
+        fz1 = New PKW("BMW", 270, 25000, 5)
         fz2 = fz1
 
         Console.WriteLine($"fz1: {fz1.Name}")

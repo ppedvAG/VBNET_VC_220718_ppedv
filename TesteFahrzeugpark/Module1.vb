@@ -79,18 +79,25 @@ Module Module1
         'Fahrzeug.ZeigeAnzahlErstellterFahrzeuge()
 #End Region
 
-#Region "Modul08"
+#Region "Modul 08: Interfaces und Polymorphismus"
 
+        ''Deklaration und Initialisierung von Bsp-Variablen/Objekt
         'Dim pkw1 As PKW = New PKW("BMW", 230, 25000, 5)
+        ''Zuweisung eines PKWs zu einer Fahrezugvariablen (SW: Polymorphismus)
         'Dim fz1 As Fahrzeug = pkw1
+        ''Zuweisung eines PKWs zu einer IBewegbar-Variablen (SW: Polymorphismus)
         'Dim bewegbaresObjekt As IBewegbar = pkw1
 
+        ''Ausgabe eine PKW-Eigenschaft über PKW-Variable
         'Console.WriteLine(pkw1.AnzahlTueren)
 
+        ''Ausgabe einer Fahrzeug-Eigenschaft (des PKW-Objekts) über Fahrzeugvariable
         'Console.WriteLine(fz1.Preis)
 
+        ''Aufruf einer IBewegbar-Methode (des PKW-Objekts) über IBewegbar-Variable
         'bewegbaresObjekt.Crash()
 
+        ''IBewegbar-Array kann jedes Objekt mit IBewegbar beinhalten
         'Dim bewegbarArray(1) As IBewegbar
 
         'bewegbarArray(0) = pkw1
@@ -98,170 +105,183 @@ Module Module1
 
         'bewegbarArray(1).Crash()
 
+        ''Bsp-Aufruf der untenstehenden Methode
         'MontiereNeuesRad(pkw1)
-
         'MontiereNeuesRad(bewegbarArray(1))
 #End Region
 
-#Region "Lab08"
+#Region "Lab08: IBeladbar"
         'Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
         'Dim flugzeug1 As Flugzeug = New Flugzeug("Boing", 800, 3500000, 9999)
         'Dim schiff1 As Schiff = New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf)
 
-        'BeladeFahrzeuge(pkw1, flugzeug1)
+        'BeladeFahrzeug(schiff1, schiff1)
         'Console.WriteLine()
 
-        'BeladeFahrzeuge(pkw1, schiff1)
+        'BeladeFahrzeug(pkw1, flugzeug1)
         'Console.WriteLine()
 
-        'BeladeFahrzeuge(schiff1, flugzeug1)
+        'BeladeFahrzeug(pkw1, schiff1)
         'Console.WriteLine()
 
-        'Console.WriteLine(schiff1.Ladung.Name)
+        'BeladeFahrzeug(schiff1, flugzeug1)
+        'Console.WriteLine()
+
         'Console.WriteLine(schiff1.BeschreibeMich())
+        'Console.WriteLine()
+
+        'schiff1.Entlade()
+        'Console.WriteLine()
+
+        'schiff1.Entlade()
 #End Region
 
-#Region "Modul 09"
+#Region "Modul09: Generische Listen"
 
-        'Dim Städteliste As List(Of String) = New List(Of String)()
+        ''Deklaration und Initialisierung einer List-Variablen, welche Strings fassen kann
+        'Dim StädteListe As List(Of String) = New List(Of String)()
 
-        'Städteliste.Add("München")
-        'Städteliste.Add("Berlin")
-        'Städteliste.Add("Hamburg")
-        'Städteliste.Add("Köln")
-        'Städteliste.Add("Leipzig")
+        ''Hinzufügen von Strings zu der Liste
+        'StädteListe.Add("München")
+        'StädteListe.Add("Berlin")
+        'StädteListe.Add("Hamburg")
 
-        'Console.WriteLine(Städteliste.Count)
+        ''Ausgabe der Anzahl der Elemente in der Liste
+        'Console.WriteLine(StädteListe.Count)
 
-        'Console.WriteLine(Städteliste(2))
-
-        'Städteliste(2) = "Hannover"
-        'Console.WriteLine(Städteliste(2))
-
-        'For Each stadt In Städteliste
+        ''ForEach-Schleife über die Liste
+        'For Each stadt In StädteListe
         '    Console.WriteLine(stadt)
         'Next
 
-        'Städteliste.Remove("Köln")
+        ''Manipulation des ersten Elements in der Liste
+        'StädteListe(0) = "Köln"
 
-        'For index = 0 To Städteliste.Count - 1
-        '    Console.WriteLine(Städteliste(index))
-        'Next
+        ''Ausgabe des ersten Elements in der Liste
+        'Console.WriteLine(StädteListe(0))
 
-        'Dim fahrzeugListe As List(Of Fahrzeug) = New List(Of Fahrzeug)
 
+        ''Erstellen einer Liste, welche beliebige Fahrzeuge (PKWs, Flugzeuge, Schiffe) fassen kann
+        'Dim fahrzeugListe As List(Of Fahrzeug) = New List(Of Fahrzeug)()
+
+        ''Hinzufügen von Elementen zur Liste
         'Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
-
         'fahrzeugListe.Add(pkw1)
         'fahrzeugListe.Add(New Flugzeug("Boing", 800, 3500000, 9999))
         'fahrzeugListe.Add(New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf))
 
+        ''For-Schleife über die Liste
         'For index = 0 To fahrzeugListe.Count - 1
         '    Console.WriteLine(fahrzeugListe(index).BeschreibeMich())
-        '    fahrzeugListe(index).Hupen()
-
-        '    If TypeOf fahrzeugListe(index) Is PKW Then
-
-        '        Console.WriteLine(DirectCast(fahrzeugListe(index), PKW).AnzahlRäder)
-
-        '    End If
         'Next
 
 
-        'Dim dict As Dictionary(Of String, Fahrzeug) = New Dictionary(Of String, Fahrzeug)
+        ''Erstellen eines neuen Dictionaries mit Strins als Keys und Fahrzeugen als Values
+        'Dim dict As Dictionary(Of String, Fahrzeug) = New Dictionary(Of String, Fahrzeug)()
+
+        ''Hinzufügen von neuen Dictionary-Einträgen
         'dict.Add("fahren", pkw1)
         'dict.Add("schwimmen", New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf))
         'dict.Add("fliegen", New Flugzeug("Boing", 800, 3500000, 9999))
 
-        'Console.WriteLine(dict.Count)
+        ''Ausgabe der BeschreibeMich()-Methode des Flugzeuges über den String-Key des Dictionaries
+        'Console.WriteLine(dict("fliegen").BeschreibeMich())
 
-        'Console.WriteLine(dict("schwimmen").Name)
-
-        'dict("schwimmen") = New Schiff("Aida", 50000000, 60, Schiff.Schiffstreibstoff.Schweröl)
-        'Console.WriteLine(dict("schwimmen").Name)
-
-        'For Each fz In dict
-        '    Console.WriteLine($"{fz.Key}: {fz.Value.Name}")
+        ''ForEach-Schleife über Dictionary
+        'For Each item In dict
+        '    Console.WriteLine(item.Key + ": " + item.Value.Name)
         'Next
 
 #End Region
 
-        Dim fzQueue As Queue(Of Fahrzeug) = New Queue(Of Fahrzeug)()
-        Dim fzStack As Stack(Of Fahrzeug) = New Stack(Of Fahrzeug)()
-        Dim fzDict As Dictionary(Of Fahrzeug, Fahrzeug) = New Dictionary(Of Fahrzeug, Fahrzeug)()
-        Dim generator As Random = New Random()
+#Region "Lab 09: Zufällige Fahrzeuglisten"
+        ''Initialisierung der Listen und des Zufallszahlengenerators
+        'Dim generator As Random = New Random()
+        'Dim fzQueue As Queue(Of Fahrzeug) = New Queue(Of Fahrzeug)()
+        'Dim fzStack As Stack(Of Fahrzeug) = New Stack(Of Fahrzeug)()
+        'Dim fzDict As Dictionary(Of Fahrzeug, Fahrzeug) = New Dictionary(Of Fahrzeug, Fahrzeug)()
 
-        Console.Write("Wie viele Fahrzeuge sollen erstellt werden: ")
-        Dim anzahlFahrzeuge As Integer = Integer.Parse(Console.ReadLine())
+        ''Initialisierung einer Variablen zur Angabe der Durchläufe
+        'Dim anzahlFahrzeuge As Integer = 10
 
-        For index = 1 To anzahlFahrzeuge
+        ''Zufällige "Befüllung" der Listen mittels des Zufallszahlengenerators und SelectCase
+        'For index = 1 To anzahlFahrzeuge
+        '    Select Case generator.Next(1, 4)
+        '        Case 1
+        '            fzStack.Push(PKW.ErstelleZufälligesFahzeug($"_S{index}"))
+        '            fzQueue.Enqueue(PKW.ErstelleZufälligesFahzeug($"_Q{index}"))
+        '        Case 2
+        '            fzStack.Push(New Schiff($"Titanic_S{index}", 50, 3000000, Schiff.Schiffstreibstoff.Dampf))
+        '            fzQueue.Enqueue(New Schiff($"Titanic_Q{index}", 50, 3000000, Schiff.Schiffstreibstoff.Dampf))
+        '        Case 3
+        '            fzStack.Push(New Flugzeug($"Boing_S{index}", 800, 2900000, 9900))
+        '            fzQueue.Enqueue(New Flugzeug($"Boing_Q{index}", 800, 2900000, 9900))
+        '    End Select
+        'Next
 
-            Select Case generator.Next(1, 4)
-                Case 1
-                    fzQueue.Enqueue(New PKW($"BMW_Q{index}", 230, 25000, 5))
-                    fzStack.Push(New PKW($"BMW_S{index}", 230, 25000, 5))
-                Case 2
-                    fzQueue.Enqueue(New Flugzeug($"Boing_Q{index}", 50000, 3000, 9999))
-                    fzStack.Push(New Flugzeug($"Boing_S{index}", 50000, 3000, 9999))
-                Case 3
-                    fzQueue.Enqueue(New Schiff($"Titanic_Q{index}", 2000, 30, Schiff.Schiffstreibstoff.Dampf))
-                    fzStack.Push(New Schiff($"Titanic_S{index}", 2000, 30, Schiff.Schiffstreibstoff.Dampf))
+        ''Versuch, die QueueFz's mit den StackFz's zu beladen
+        'For index = 1 To anzahlFahrzeuge
+        '    'Prüfung auf das Interface (ob beladen werden kann)
+        '    If TypeOf fzQueue.Peek() Is IBeladbar Then
+        '        'wenn ja, dann Cast ins Interface 
+        '        Dim beladbaresFz As IBeladbar = DirectCast(fzQueue.Peek(), IBeladbar)
+        '        'und Aufruf der Belade()-Funktion (mittels Peek(), da die Fz's noch benötigt werden)
+        '        beladbaresFz.Belade(fzStack.Peek())
+        '        'Hinzufügen der Fz's zum Dictionary (mittels Dequeue()/Pop(), damit beim nächsten Durchlauf andere Fz's oben sind)
+        '        fzDict.Add(fzQueue.Dequeue(), fzStack.Pop())
+        '    Else
+        '        'wenn nein, dann werden die Fz's vor dem nächsten Durchlauf rausgeschmissen
+        '        fzQueue.Dequeue()
+        '        fzStack.Pop()
+        '    End If
+        'Next
 
-            End Select
-        Next
+        ''Programmpause
+        'Console.ReadKey()
+        'Console.WriteLine("-----LADELISTE----")
 
-        For index = 1 To anzahlFahrzeuge
-
-            If TypeOf fzQueue.Peek() Is IBeladbar Then
-
-                Dim beladbaresObjekt As IBeladbar = DirectCast(fzQueue.Peek(), IBeladbar)
-                beladbaresObjekt.Beladen(fzStack.Peek())
-
-                fzDict.Add(fzQueue.Dequeue(), fzStack.Pop())
-
-            Else
-                fzStack.Pop()
-                fzQueue.Dequeue()
-
-            End If
-
-        Next
-
-        Console.ReadKey()
-
-        Console.WriteLine("------------LADELISTE------------")
-
-        For Each dictEintrag In fzDict
-            Console.WriteLine($"{dictEintrag.Key.Name} hat {dictEintrag.Value.Name} geladen.")
-        Next
+        ''Ausgabe des Dictionaries
+        'For Each item In fzDict
+        '    Console.WriteLine($"{item.Key.Name} hat {item.Value.Name} geladen.")
+        'Next
+#End Region
 
         Console.ReadKey()
     End Sub
 
-    Public Sub BeladeFahrzeuge(fz1 As Fahrzeug, fz2 As Fahrzeug)
-
+#Region "Lab 08 Methode"
+    Public Sub BeladeFahrzeug(fz1 As Fahrzeug, fz2 As Fahrzeug)
+        'Überprüfung, ob die fz's das Interface implementiert haben (dh. ob sie eine Ladung aufnehmen können)
         If TypeOf fz1 Is IBeladbar Then
-            Dim beladbaresObjekt As IBeladbar = DirectCast(fz1, IBeladbar)
-            beladbaresObjekt.Beladen(fz2)
+            'Wenn ja, dann Cast in temporäre IBeladbar-Variable
+            Dim beladbaresO As IBeladbar = DirectCast(fz1, IBeladbar)
+            'und Aufruf der Belade()-Funktion mit Übergabe des anderen Fahrzeugs
+            beladbaresO.Belade(fz2)
         ElseIf TypeOf fz2 Is IBeladbar Then
-            DirectCast(fz2, IBeladbar).Beladen(fz1)
+            'Alternative Schreibweise ohne temporäre Variable
+            DirectCast(fz2, IBeladbar).Belade(fz1)
         Else
-            Console.WriteLine("Kein Fahrzeug hat einen Laderaum")
+            Console.WriteLine("Kein Fahrzeug hat einen Laderaum, der beladen werden konnte.")
         End If
-
     End Sub
+#End Region
 
+#Region "Modul 08 Methode"
+    'Diese Methode empfängt ein IBewegbar-Objekt -> Jedes Objekt, das IBewegbar implementiert hat
     Sub MontiereNeuesRad(bewegbaresO As IBewegbar)
 
-        bewegbaresO.AnzahlRäder += 1
+        bewegbaresO.AnzahlRaeder += 1
 
+        'Prüfung, ob Objekt in Variable ein PLW ist
         If TypeOf bewegbaresO Is PKW Then
-
+            'Cast des Objekts in PKW
             Dim pkw1 As PKW = DirectCast(bewegbaresO, PKW)
+            'Zugriff auf PKW-Eigenschaft
             pkw1.AnzahlTueren += 1
 
         End If
 
     End Sub
+#End Region
 
 End Module
