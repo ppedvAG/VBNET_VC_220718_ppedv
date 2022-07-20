@@ -79,6 +79,8 @@ Module Module1
         'Fahrzeug.ZeigeAnzahlErstellterFahrzeuge()
 #End Region
 
+#Region "Modul08"
+
         'Dim pkw1 As PKW = New PKW("BMW", 230, 25000, 5)
         'Dim fz1 As Fahrzeug = pkw1
         'Dim bewegbaresObjekt As IBewegbar = pkw1
@@ -99,23 +101,139 @@ Module Module1
         'MontiereNeuesRad(pkw1)
 
         'MontiereNeuesRad(bewegbarArray(1))
+#End Region
+
+#Region "Lab08"
+        'Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
+        'Dim flugzeug1 As Flugzeug = New Flugzeug("Boing", 800, 3500000, 9999)
+        'Dim schiff1 As Schiff = New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf)
+
+        'BeladeFahrzeuge(pkw1, flugzeug1)
+        'Console.WriteLine()
+
+        'BeladeFahrzeuge(pkw1, schiff1)
+        'Console.WriteLine()
+
+        'BeladeFahrzeuge(schiff1, flugzeug1)
+        'Console.WriteLine()
+
+        'Console.WriteLine(schiff1.Ladung.Name)
+        'Console.WriteLine(schiff1.BeschreibeMich())
+#End Region
+
+#Region "Modul 09"
+
+        'Dim Städteliste As List(Of String) = New List(Of String)()
+
+        'Städteliste.Add("München")
+        'Städteliste.Add("Berlin")
+        'Städteliste.Add("Hamburg")
+        'Städteliste.Add("Köln")
+        'Städteliste.Add("Leipzig")
+
+        'Console.WriteLine(Städteliste.Count)
+
+        'Console.WriteLine(Städteliste(2))
+
+        'Städteliste(2) = "Hannover"
+        'Console.WriteLine(Städteliste(2))
+
+        'For Each stadt In Städteliste
+        '    Console.WriteLine(stadt)
+        'Next
+
+        'Städteliste.Remove("Köln")
+
+        'For index = 0 To Städteliste.Count - 1
+        '    Console.WriteLine(Städteliste(index))
+        'Next
+
+        'Dim fahrzeugListe As List(Of Fahrzeug) = New List(Of Fahrzeug)
+
+        'Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
+
+        'fahrzeugListe.Add(pkw1)
+        'fahrzeugListe.Add(New Flugzeug("Boing", 800, 3500000, 9999))
+        'fahrzeugListe.Add(New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf))
+
+        'For index = 0 To fahrzeugListe.Count - 1
+        '    Console.WriteLine(fahrzeugListe(index).BeschreibeMich())
+        '    fahrzeugListe(index).Hupen()
+
+        '    If TypeOf fahrzeugListe(index) Is PKW Then
+
+        '        Console.WriteLine(DirectCast(fahrzeugListe(index), PKW).AnzahlRäder)
+
+        '    End If
+        'Next
 
 
-        Dim pkw1 As PKW = New PKW("BMW", 270, 27000, 5)
-        Dim flugzeug1 As Flugzeug = New Flugzeug("Boing", 800, 3500000, 9999)
-        Dim schiff1 As Schiff = New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf)
+        'Dim dict As Dictionary(Of String, Fahrzeug) = New Dictionary(Of String, Fahrzeug)
+        'dict.Add("fahren", pkw1)
+        'dict.Add("schwimmen", New Schiff("Titanic", 50, 2900000, Schiff.Schiffstreibstoff.Dampf))
+        'dict.Add("fliegen", New Flugzeug("Boing", 800, 3500000, 9999))
 
-        BeladeFahrzeuge(pkw1, flugzeug1)
-        Console.WriteLine()
+        'Console.WriteLine(dict.Count)
 
-        BeladeFahrzeuge(pkw1, schiff1)
-        Console.WriteLine()
+        'Console.WriteLine(dict("schwimmen").Name)
 
-        BeladeFahrzeuge(schiff1, flugzeug1)
-        Console.WriteLine()
+        'dict("schwimmen") = New Schiff("Aida", 50000000, 60, Schiff.Schiffstreibstoff.Schweröl)
+        'Console.WriteLine(dict("schwimmen").Name)
 
-        Console.WriteLine(schiff1.Ladung.Name)
-        Console.WriteLine(schiff1.BeschreibeMich())
+        'For Each fz In dict
+        '    Console.WriteLine($"{fz.Key}: {fz.Value.Name}")
+        'Next
+
+#End Region
+
+        Dim fzQueue As Queue(Of Fahrzeug) = New Queue(Of Fahrzeug)()
+        Dim fzStack As Stack(Of Fahrzeug) = New Stack(Of Fahrzeug)()
+        Dim fzDict As Dictionary(Of Fahrzeug, Fahrzeug) = New Dictionary(Of Fahrzeug, Fahrzeug)()
+        Dim generator As Random = New Random()
+
+        Console.Write("Wie viele Fahrzeuge sollen erstellt werden: ")
+        Dim anzahlFahrzeuge As Integer = Integer.Parse(Console.ReadLine())
+
+        For index = 1 To anzahlFahrzeuge
+
+            Select Case generator.Next(1, 4)
+                Case 1
+                    fzQueue.Enqueue(New PKW($"BMW_Q{index}", 230, 25000, 5))
+                    fzStack.Push(New PKW($"BMW_S{index}", 230, 25000, 5))
+                Case 2
+                    fzQueue.Enqueue(New Flugzeug($"Boing_Q{index}", 50000, 3000, 9999))
+                    fzStack.Push(New Flugzeug($"Boing_S{index}", 50000, 3000, 9999))
+                Case 3
+                    fzQueue.Enqueue(New Schiff($"Titanic_Q{index}", 2000, 30, Schiff.Schiffstreibstoff.Dampf))
+                    fzStack.Push(New Schiff($"Titanic_S{index}", 2000, 30, Schiff.Schiffstreibstoff.Dampf))
+
+            End Select
+        Next
+
+        For index = 1 To anzahlFahrzeuge
+
+            If TypeOf fzQueue.Peek() Is IBeladbar Then
+
+                Dim beladbaresObjekt As IBeladbar = DirectCast(fzQueue.Peek(), IBeladbar)
+                beladbaresObjekt.Beladen(fzStack.Peek())
+
+                fzDict.Add(fzQueue.Dequeue(), fzStack.Pop())
+
+            Else
+                fzStack.Pop()
+                fzQueue.Dequeue()
+
+            End If
+
+        Next
+
+        Console.ReadKey()
+
+        Console.WriteLine("------------LADELISTE------------")
+
+        For Each dictEintrag In fzDict
+            Console.WriteLine($"{dictEintrag.Key.Name} hat {dictEintrag.Value.Name} geladen.")
+        Next
 
         Console.ReadKey()
     End Sub
