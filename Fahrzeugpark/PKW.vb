@@ -1,6 +1,7 @@
 ﻿'vgl auch Schiff
 Public Class PKW
     Inherits Fahrzeug
+    Implements IBewegbar
 
     Private _anzahlTueren As Integer
     Public Property AnzahlTueren() As Integer
@@ -9,6 +10,16 @@ Public Class PKW
         End Get
         Set(ByVal value As Integer)
             _anzahlTueren = value
+        End Set
+    End Property
+
+    Private _anzahlRäder As Integer
+    Public Property AnzahlRäder As Integer Implements IBewegbar.AnzahlRäder
+        Get
+            Return _anzahlRäder
+        End Get
+        Set(value As Integer)
+            _anzahlRäder = value
         End Set
     End Property
 
@@ -28,4 +39,8 @@ Public Class PKW
         Console.WriteLine("Hup Hup")
     End Sub
 
+    Public Sub Crash() Implements IBewegbar.Crash
+        AnzahlRäder -= 1
+        Console.WriteLine("Da war ein Baum im Weg")
+    End Sub
 End Class

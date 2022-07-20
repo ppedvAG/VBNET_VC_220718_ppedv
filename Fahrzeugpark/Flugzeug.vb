@@ -1,6 +1,7 @@
 ﻿'vgl Schiff
 Public Class Flugzeug
     Inherits Fahrzeug
+    Implements IBewegbar
 
     Private _maxFlughöhe As Integer
     Public Property MaxFlughöhe() As Integer
@@ -9,6 +10,16 @@ Public Class Flugzeug
         End Get
         Set(ByVal value As Integer)
             _maxFlughöhe = value
+        End Set
+    End Property
+
+    Private _anzahlRäder As Integer
+    Public Property AnzahlRäder As Integer Implements IBewegbar.AnzahlRäder
+        Get
+            Return _anzahlRäder
+        End Get
+        Set(value As Integer)
+            _anzahlRäder = value
         End Set
     End Property
 
@@ -23,5 +34,10 @@ Public Class Flugzeug
 
     Public Overrides Sub Hupen()
         Console.WriteLine("Piep")
+    End Sub
+
+    Public Sub Crash() Implements IBewegbar.Crash
+        AnzahlRäder -= 2
+        Console.WriteLine("Da war die Landebahn zu kurz")
     End Sub
 End Class
