@@ -7,11 +7,11 @@
         btn_Rechts_Start = Btn_Rechts.Left
     End Sub
     Private Sub Btn_Links_Click(sender As Object, e As EventArgs) Handles Btn_Links.Click
-        Btn_Links.Left += 10
+        Btn_Links.Left += 5
     End Sub
 
     Private Sub Btn_Rechts_Click(sender As Object, e As EventArgs) Handles Btn_Rechts.Click
-        Btn_Rechts.Left -= 10
+        Btn_Rechts.Left -= 5
     End Sub
 
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
