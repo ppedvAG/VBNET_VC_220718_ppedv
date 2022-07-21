@@ -133,7 +133,7 @@ Public MustInherit Class Fahrzeug
 
     'Überschreibung der ToString-Funktion
     Public Overrides Function ToString() As String
-        Return Me.BeschreibeMich()
+        Return $"{Me.GetType()}: {Me.Name}"
     End Function
 
     'Abstarkte Methoden (markiert mit dem MUSTOVERRIDE-Stichwort) besitzen nur eine Signatur. Die Implementierung des Körpers
